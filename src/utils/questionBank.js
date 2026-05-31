@@ -1,13 +1,15 @@
 // ──────────────────────────────────────────────────
-// Question Bank — Equal Groups (100 Questions, 10 Types)
-// Singapore MOE Primary 1 Aligned
+// Question Bank — समान समूह (100 प्रश्न, 10 प्रकार)
+// Hindi Medium — Equal Groups: Multiplication & Division
 // ──────────────────────────────────────────────────
 
-const sgNames = ['Wei Ming','Priya','Raju','Ahmad','Mia','Jun','Siti','Ryan','Xiao Ling','Aisha'];
-const femaleNames = ['Priya','Mia','Siti','Xiao Ling','Aisha'];
-const objects = ['cupcakes','balloons','stickers','marbles','apples','cookies','mangoes','erasers','books','sweets'];
-const containers = ['plate','bag','box','basket','table','tray'];
-const emojis = ['🍓','⭐','🍪','🐟','🎈','🍎','📚','🧁','🥭','✏️'];
+// भारतीय नाम
+const names = ['मीरा', 'रोहन', 'प्रिया', 'अर्जुन', 'अनीता', 'विजय', 'सोनम', 'कार्तिक', 'पूजा', 'आदित्य'];
+const femaleNames = ['मीरा', 'प्रिया', 'अनीता', 'सोनम', 'पूजा'];
+
+const objects = ['केक', 'गुब्बारे', 'स्टिकर', 'कंचे', 'सेब', 'बिस्किट', 'आम', 'रबड़', 'किताबें', 'मिठाइयाँ'];
+const containers = ['थाली', 'थैला', 'डिब्बा', 'टोकरी', 'मेज़', 'ट्रे'];
+const emojis = ['🍓', '⭐', '🍪', '🐟', '🎈', '🍎', '📚', '🧁', '🥭', '✏️'];
 
 export function shuffleArray(array) {
   const arr = [...array];
@@ -19,8 +21,7 @@ export function shuffleArray(array) {
 }
 
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-function pronoun(name) { return femaleNames.includes(name) ? 'She' : 'He'; }
-function pronounLower(name) { return femaleNames.includes(name) ? 'she' : 'he'; }
+function pronoun(name) { return femaleNames.includes(name) ? 'वह' : 'वह'; }
 
 export function generateDistractors(correct, min = 0, max = 40, count = 3) {
   const distractors = new Set();
@@ -48,137 +49,137 @@ function genNums(diff) {
   return { numGroups, groupSize, total: numGroups * groupSize };
 }
 
-// Q1: Count equal groups — find total
+// Q1: समूहों में कुल गिनो
 function genQ1(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   const emoji = pick(emojis);
   return {
     id, type: 'count_groups', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'total',
-    questionText: `There are ${numGroups} groups. Each group has ${groupSize} ${emoji}. How many ${emoji} altogether?`,
+    questionText: `${numGroups} समूह हैं। हर समूह में ${groupSize} ${emoji} हैं। कुल कितने ${emoji} हैं?`,
     visual: 'groupDiagram', objectEmoji: emoji,
-    hint1: `Count the ${emoji} in each group: ${groupSize}. Now count all ${numGroups} groups.`,
-    hint2: `Say it with me: ${Array(numGroups).fill(groupSize).join(', ')}. Count them all up!`,
-    explanation: `${numGroups} groups of ${groupSize} equals ${total}. We can count: ${Array.from({length:numGroups},(_, i)=>groupSize*(i+1)).join(', ')}!`,
+    hint1: `हर समूह में ${groupSize} गिनो। फिर सभी ${numGroups} समूह गिनो।`,
+    hint2: `मेरे साथ गिनो: ${Array.from({length:numGroups},(_,i)=>groupSize*(i+1)).join(', ')}!`,
+    explanation: `${numGroups} के ${groupSize} समूह = ${total}। हम गिन सकते हैं: ${Array.from({length:numGroups},(_,i)=>groupSize*(i+1)).join(', ')}!`,
     options: generateDistractors(total),
     correctAnswer: total,
   };
 }
 
-// Q2: Equal group picture — tap correct arrangement
+// Q2: समान समूह चित्र — सही व्यवस्था चुनो
 function genQ2(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   const emoji = pick(emojis);
-  const correctLabel = `${numGroups} groups of ${groupSize}`;
+  const correctLabel = `${numGroups} के ${groupSize} समूह`;
   const wrongOptions = [
-    `${numGroups + 1} groups of ${groupSize}`,
-    `${numGroups} groups of ${groupSize + 1}`,
-    `${groupSize} groups of ${numGroups !== groupSize ? numGroups : numGroups + 2}`,
+    `${numGroups + 1} के ${groupSize} समूह`,
+    `${numGroups} के ${groupSize + 1} समूह`,
+    `${groupSize} के ${numGroups !== groupSize ? numGroups : numGroups + 2} समूह`,
   ];
   return {
     id, type: 'picture_group', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'total',
-    questionText: `Which shows ${numGroups} groups of ${groupSize}?`,
+    questionText: `कौन सी तस्वीर ${numGroups} के ${groupSize} समूह दिखाती है?`,
     visual: 'picture', objectEmoji: emoji,
-    hint1: `Look for exactly ${numGroups} circles with ${groupSize} items each.`,
-    hint2: `Count the groups first, then count the items inside each group.`,
-    explanation: `${numGroups} groups of ${groupSize} means ${numGroups} circles each with ${groupSize} ${emoji}.`,
+    hint1: `ठीक ${numGroups} घेरे खोजो जिनमें हर में ${groupSize} चीज़ें हों।`,
+    hint2: `पहले समूह गिनो, फिर हर समूह में चीज़ें गिनो।`,
+    explanation: `${numGroups} के ${groupSize} समूह मतलब ${numGroups} घेरे, हर में ${groupSize} ${emoji}।`,
     options: shuffleArray([correctLabel, ...wrongOptions.slice(0, 3)]),
     correctAnswer: correctLabel,
   };
 }
 
-// Q3: Fill blank — find total
+// Q3: खाली जगह भरो — कुल बताओ
 function genQ3(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   return {
     id, type: 'fill_total', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'total',
-    questionText: `${numGroups} groups of ${groupSize} = ___`,
+    questionText: `${numGroups} के ${groupSize} समूह = ___`,
     visual: 'sentence', objectEmoji: pick(emojis),
-    hint1: `Add ${groupSize} together ${numGroups} times.`,
+    hint1: `${groupSize} को ${numGroups} बार जोड़ो।`,
     hint2: `${Array(numGroups).fill(groupSize).join(' + ')} = ?`,
-    explanation: `${numGroups} groups of ${groupSize} = ${total}.`,
+    explanation: `${numGroups} के ${groupSize} समूह = ${total}।`,
     options: generateDistractors(total),
     correctAnswer: total,
   };
 }
 
-// Q4: Fill blank — find group size
+// Q4: खाली जगह भरो — समूह का आकार बताओ
 function genQ4(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   return {
     id, type: 'fill_group_size', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'groupSize',
-    questionText: `${numGroups} groups of ___ = ${total}`,
+    questionText: `${numGroups} के ___ समूह = ${total}`,
     visual: 'sentence', objectEmoji: pick(emojis),
-    hint1: `Share ${total} equally into ${numGroups} groups.`,
-    hint2: `If ${numGroups} groups make ${total}, how many in each group?`,
-    explanation: `${total} shared into ${numGroups} groups gives ${groupSize} in each group.`,
+    hint1: `${total} को ${numGroups} समूहों में बराबर बाँटो।`,
+    hint2: `अगर ${numGroups} समूह मिलकर ${total} बनाते हैं, तो हर में कितने?`,
+    explanation: `${total} को ${numGroups} समूहों में बाँटने पर हर में ${groupSize} आते हैं।`,
     options: generateDistractors(groupSize),
     correctAnswer: groupSize,
   };
 }
 
-// Q5: Fill blank — find number of groups
+// Q5: खाली जगह भरो — समूहों की संख्या बताओ
 function genQ5(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   return {
     id, type: 'fill_num_groups', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'numGroups',
-    questionText: `___ groups of ${groupSize} = ${total}`,
+    questionText: `___ के ${groupSize} समूह = ${total}`,
     visual: 'sentence', objectEmoji: pick(emojis),
-    hint1: `How many times does ${groupSize} fit into ${total}?`,
-    hint2: `Count by ${groupSize}s until you reach ${total}.`,
-    explanation: `${total} divided into groups of ${groupSize} gives ${numGroups} groups.`,
+    hint1: `${groupSize} ${total} में कितनी बार आता है?`,
+    hint2: `${groupSize}-${groupSize}-${groupSize} गिनते जाओ जब तक ${total} न मिले।`,
+    explanation: `${total} को ${groupSize} के समूहों में बाँटने पर ${numGroups} समूह बनते हैं।`,
     options: generateDistractors(numGroups),
     correctAnswer: numGroups,
   };
 }
 
-// Q6: Singapore word problem (multiplication sense)
+// Q6: हिंदी शब्द समस्या (गुणा)
 function genQ6(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
-  const name = pick(sgNames);
+  const name = pick(names);
   const obj = pick(objects);
   const container = pick(containers);
   const emoji = pick(emojis);
   return {
     id, type: 'word_problem_mult', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'total',
-    questionText: `${name} puts ${groupSize} ${obj} on each ${container}. ${pronoun(name)} has ${numGroups} ${container}s. How many ${obj} altogether?`,
+    questionText: `${name} हर ${container} पर ${groupSize} ${obj} रखता है। उसके पास ${numGroups} ${container} हैं। कुल कितने ${obj} हैं?`,
     visual: 'groupDiagram', objectEmoji: emoji,
     characterName: name, containerName: container, objectName: obj,
-    hint1: `Draw ${numGroups} circles. Put ${groupSize} ${obj} in each one.`,
+    hint1: `${numGroups} घेरे बनाओ। हर में ${groupSize} ${obj} रखो।`,
     hint2: `${Array(numGroups).fill(groupSize).join(' + ')} = ?`,
-    explanation: `${numGroups} groups of ${groupSize} is ${total}. ${name} has ${total} ${obj} altogether.`,
+    explanation: `${numGroups} के ${groupSize} समूह = ${total}। ${name} के पास कुल ${total} ${obj} हैं।`,
     options: generateDistractors(total),
     correctAnswer: total,
   };
 }
 
-// Q7: Singapore word problem (fair sharing / division sense)
+// Q7: हिंदी शब्द समस्या (बराबर बाँटना / भाग)
 function genQ7(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
-  const name = pick(sgNames);
+  const name = pick(names);
   const obj = pick(objects);
   const container = pick(containers);
   const emoji = pick(emojis);
   return {
     id, type: 'word_problem_div', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'groupSize',
-    questionText: `${name} has ${total} ${obj}. ${pronoun(name)} shares them equally into ${numGroups} ${container}s. How many ${obj} does each ${container} get?`,
+    questionText: `${name} के पास ${total} ${obj} हैं। वह उन्हें ${numGroups} ${container}ों में बराबर बाँटता है। हर ${container} में कितने ${obj} आएंगे?`,
     visual: 'groupDiagram', objectEmoji: emoji,
     characterName: name, containerName: container, objectName: obj,
-    hint1: `Draw ${numGroups} ${container}s. Share ${total} ${obj} equally.`,
-    hint2: `${total} shared into ${numGroups} equal groups. Count: ${groupSize} in each!`,
-    explanation: `${total} shared equally into ${numGroups} groups gives ${groupSize} in each group.`,
+    hint1: `${numGroups} ${container} बनाओ। ${total} ${obj} बराबर बाँटो।`,
+    hint2: `${total} को ${numGroups} बराबर समूहों में — हर में ${groupSize}!`,
+    explanation: `${total} को ${numGroups} समूहों में बाँटने पर हर में ${groupSize} आते हैं।`,
     options: generateDistractors(groupSize),
     correctAnswer: groupSize,
   };
 }
 
-// Q8: True or False — is this equal?
+// Q8: सच या झूठ — क्या यह समान है?
 function genQ8(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   const isTrue = Math.random() > 0.5;
@@ -186,49 +187,49 @@ function genQ8(id, diff) {
   return {
     id, type: 'true_false_group', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'none', isTrue,
-    questionText: `"${numGroups} groups of ${groupSize} = ${shownTotal}" — True or False?`,
+    questionText: `"${numGroups} के ${groupSize} समूह = ${shownTotal}" — सच है या झूठ?`,
     visual: 'sentence', objectEmoji: pick(emojis),
-    hint1: `Check the math: what is ${numGroups} groups of ${groupSize}?`,
-    hint2: `Count: ${Array(numGroups).fill(groupSize).join(' + ')} = ?`,
-    explanation: `${numGroups} groups of ${groupSize} is ${total}. So the statement is ${isTrue ? 'True' : 'False'}.`,
-    options: ['True', 'False'],
-    correctAnswer: isTrue ? 'True' : 'False',
+    hint1: `हिसाब लगाओ: ${numGroups} के ${groupSize} समूह कितने होते हैं?`,
+    hint2: `गिनो: ${Array(numGroups).fill(groupSize).join(' + ')} = ?`,
+    explanation: `${numGroups} के ${groupSize} समूह = ${total}। इसलिए यह कथन ${isTrue ? 'सच' : 'झूठ'} है।`,
+    options: ['सच', 'झूठ'],
+    correctAnswer: isTrue ? 'सच' : 'झूठ',
   };
 }
 
-// Q9: Spot the equal group arrangement (pictorial MCQ)
+// Q9: समान समूह पहचानो (चित्रात्मक MCQ)
 function genQ9(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   const emoji = pick(emojis);
-  const correctLabel = `All groups have ${groupSize}`;
-  const wrong1 = `Groups have ${groupSize} and ${groupSize + 1}`;
-  const wrong2 = `Groups have ${groupSize - 1} and ${groupSize}`;
-  const wrong3 = `Groups have different amounts`;
+  const correctLabel = `सभी समूहों में ${groupSize} हैं`;
+  const wrong1 = `समूहों में ${groupSize} और ${groupSize + 1} हैं`;
+  const wrong2 = `समूहों में ${groupSize - 1} और ${groupSize} हैं`;
+  const wrong3 = `समूहों में अलग-अलग मात्रा है`;
   return {
     id, type: 'spot_group_mcq', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'none',
-    questionText: `Which picture shows equal groups?`,
+    questionText: `कौन सी तस्वीर समान समूह दिखाती है?`,
     visual: 'picture', objectEmoji: emoji,
-    hint1: `Equal groups means every group has the same number.`,
-    hint2: `Count each group carefully. Which has the same in every group?`,
-    explanation: `Equal groups means all groups have the same number: ${groupSize} each.`,
+    hint1: `समान समूह मतलब हर समूह में एक जैसी संख्या।`,
+    hint2: `हर समूह को ध्यान से गिनो। किसमें सब एक जैसे हैं?`,
+    explanation: `समान समूह मतलब सभी समूहों में ${groupSize}-${groupSize} हैं।`,
     options: shuffleArray([correctLabel, wrong1, wrong2, wrong3]),
     correctAnswer: correctLabel,
   };
 }
 
-// Q10: Repeated addition link
+// Q10: बार-बार जोड़ना
 function genQ10(id, diff) {
   const { numGroups, groupSize, total } = genNums(diff);
   const repeatedAdd = Array(numGroups).fill(groupSize).join(' + ');
   return {
     id, type: 'repeated_addition', difficulty: diff, world: 0,
     numGroups, groupSize, total, missingSlot: 'numGroups',
-    questionText: `${repeatedAdd} = ___ groups of ${groupSize}`,
+    questionText: `${repeatedAdd} = ___ के ${groupSize} समूह`,
     visual: 'sentence', objectEmoji: pick(emojis),
-    hint1: `Count how many times you see the number ${groupSize}.`,
-    hint2: `${groupSize} appears ${numGroups} times! That means there are ${numGroups} groups of ${groupSize}.`,
-    explanation: `${repeatedAdd} has ${numGroups} ${groupSize}s. So it is ${numGroups} groups of ${groupSize}.`,
+    hint1: `${groupSize} कितनी बार आता है? वही समूहों की संख्या है।`,
+    hint2: `${groupSize} यहाँ ${numGroups} बार है! इसलिए ${numGroups} के ${groupSize} समूह।`,
+    explanation: `${repeatedAdd} में ${groupSize}, ${numGroups} बार है। इसलिए यह ${numGroups} के ${groupSize} समूह है।`,
     options: generateDistractors(numGroups),
     correctAnswer: numGroups,
   };
@@ -236,7 +237,6 @@ function genQ10(id, diff) {
 
 const generators = [genQ1, genQ2, genQ3, genQ4, genQ5, genQ6, genQ7, genQ8, genQ9, genQ10];
 
-// PRD difficulty distribution per type
 const diffDist = {
   q1:  [1,1,1,1,1,2,2,2,3,3],
   q2:  [1,1,1,1,1,2,2,2,3,3],
@@ -271,4 +271,4 @@ export function generateSessionQuestions() {
   return selected;
 }
 
-export { sgNames };
+export { names };

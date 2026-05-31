@@ -4,32 +4,32 @@ import { wonderNarration, wonderDiscoverNarration } from '../utils/narration';
 
 const WONDER_QUESTIONS = [
   {
-    question: "Mia has 12 strawberries and 3 plates. Can she put the same number on every plate?",
-    subtext: "When every group gets the same amount, we call them equal groups!",
+    question: "मीरा के पास 12 स्ट्रॉबेरी और 3 थालियाँ हैं। क्या वह हर थाली में एक जैसी स्ट्रॉबेरी रख सकती है?",
+    subtext: "जब हर समूह को एक जैसी चीज़ मिले, तो उसे समान समूह कहते हैं!",
     emoji: "🍓",
     bgEmojis: ["🍓", "🍽️", "✨", "🔢"],
   },
   {
-    question: "There are 4 tables. Each table has 3 bowls. How many bowls altogether?",
-    subtext: "Equal groups help us count lots of things quickly!",
+    question: "4 मेज़ें हैं। हर मेज़ पर 3 कटोरे हैं। कुल कितने कटोरे हैं?",
+    subtext: "समान समूह हमें बहुत सारी चीज़ें जल्दी गिनने में मदद करते हैं!",
     emoji: "🍜",
     bgEmojis: ["🍜", "🪑", "🔢", "💡"],
   },
   {
-    question: "If every bag has 5 oranges, and there are 3 bags, how many oranges are there?",
-    subtext: "Putting the same number in every bag — that is equal groups!",
+    question: "अगर हर थैले में 5 संतरे हैं और 3 थैले हैं, तो कुल कितने संतरे हैं?",
+    subtext: "हर थैले में एक जैसी संख्या रखना — यही समान समूह है!",
     emoji: "🍊",
     bgEmojis: ["🍊", "🛍️", "🧮", "✨"],
   },
   {
-    question: "Can you share 10 stickers fairly among 5 friends?",
-    subtext: "Fair sharing means making equal groups — everyone gets the same!",
+    question: "क्या आप 10 स्टिकर 5 दोस्तों में बराबर बाँट सकते हैं?",
+    subtext: "बराबर बाँटना मतलब समान समूह बनाना — सबको एक जैसा मिले!",
     emoji: "⭐",
     bgEmojis: ["⭐", "🤝", "🎯", "🔢"],
   },
   {
-    question: "3 groups of 4 — is that the same as 4 + 4 + 4?",
-    subtext: "Equal groups and repeated addition are best friends!",
+    question: "4 के 3 समूह — क्या यह 4 + 4 + 4 के बराबर है?",
+    subtext: "समान समूह और बार-बार जोड़ना — दोनों एक ही बात है!",
     emoji: "🧮",
     bgEmojis: ["🧮", "➕", "🎲", "🌟"],
   },
@@ -102,7 +102,7 @@ export default function WonderPhase({ onComplete, audioEnabled }) {
         </div>
         <div className={`wonder-mascot ${stage >= 1 ? 'visible' : ''}`}>
           <div className="mascot thinking">🤖</div>
-          <div className="speech-bubble wonder-bubble">Hmm... I wonder... 🤔</div>
+          <div className="speech-bubble wonder-bubble">हम्म... मैं सोच रहा हूँ... 🤔</div>
         </div>
         <div className={`wonder-question-card ${stage >= 1 ? 'visible' : ''}`}>
           <div className="wonder-emoji">{wonder.emoji}</div>
@@ -111,7 +111,7 @@ export default function WonderPhase({ onComplete, audioEnabled }) {
         </div>
         <button className={`btn btn-wonder ${stage >= 2 ? 'visible' : ''}`} onClick={handleDiscover} id="discover-btn">
           <span className="wonder-btn-sparkle">✨</span>
-          Let's Discover!
+          चलो खोजते हैं!
           <span className="wonder-btn-sparkle">✨</span>
         </button>
       </div>

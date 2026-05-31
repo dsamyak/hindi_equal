@@ -21,8 +21,8 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255,255,255,0.7);
   --text-muted: rgba(255,255,255,0.4);
-  --font-display: 'Fredoka', sans-serif;
-  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Fredoka', 'Noto Sans Devanagari', sans-serif;
+  --font-body: 'Noto Sans Devanagari', 'Nunito', sans-serif;
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;

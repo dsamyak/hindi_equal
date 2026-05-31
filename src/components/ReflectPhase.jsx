@@ -6,27 +6,27 @@ import {
 } from '../utils/narration';
 
 const REFLECT_QUESTIONS = [
-  { q: "There are 3 plates. Each plate has 4 cookies. How many cookies altogether?", options: [
-    { text: "12 — Add 4 three times", correct: true, emoji: "🍪" },
-    { text: "7 — Add 3 and 4", correct: false, emoji: "➕" },
-    { text: "We can't tell", correct: false, emoji: "❓" },
+  { q: "3 थालियाँ हैं। हर थाली पर 4 बिस्किट हैं। कुल कितने बिस्किट हैं?", options: [
+    { text: "12 — 4 को तीन बार जोड़ो", correct: true, emoji: "🍪" },
+    { text: "7 — 3 और 4 जोड़ो", correct: false, emoji: "➕" },
+    { text: "हम नहीं बता सकते", correct: false, emoji: "❓" },
   ]},
-  { q: "What makes groups 'equal'?", options: [
-    { text: "Every group has the same number", correct: true, emoji: "✅" },
-    { text: "All groups are big", correct: false, emoji: "❌" },
-    { text: "The groups are next to each other", correct: false, emoji: "❓" },
+  { q: "समूहों को 'समान' क्या बनाता है?", options: [
+    { text: "हर समूह में एक जैसी संख्या हो", correct: true, emoji: "✅" },
+    { text: "सभी समूह बड़े हों", correct: false, emoji: "❌" },
+    { text: "समूह एक-दूसरे के पास हों", correct: false, emoji: "❓" },
   ]},
-  { q: "15 stickers shared equally among 5 friends. How many does each friend get?", options: [
-    { text: "3 each", correct: true, emoji: "🧩" },
-    { text: "5 each", correct: false, emoji: "❌" },
-    { text: "10 each", correct: false, emoji: "❓" },
+  { q: "15 स्टिकर 5 दोस्तों में बराबर बाँटे। हर दोस्त को कितने मिलेंगे?", options: [
+    { text: "3 प्रत्येक को", correct: true, emoji: "🧩" },
+    { text: "5 प्रत्येक को", correct: false, emoji: "❌" },
+    { text: "10 प्रत्येक को", correct: false, emoji: "❓" },
   ]},
 ];
 
 const CONFIDENCE_LEVELS = [
-  { emoji: '😊', label: "I'm great at equal groups!", color: '#4caf50' },
-  { emoji: '🙂', label: 'I can make most equal groups!', color: '#ff9800' },
-  { emoji: '😐', label: "I'm still learning", color: '#42a5f5' },
+  { emoji: '😊', label: "मैं समान समूहों में बहुत अच्छा हूँ!", color: '#4caf50' },
+  { emoji: '🙂', label: 'मैं अधिकतर समान समूह बना सकता हूँ!', color: '#ff9800' },
+  { emoji: '😐', label: "मैं अभी सीख रहा हूँ", color: '#42a5f5' },
 ];
 
 export default function ReflectPhase({ stats, onRestart, onGoHome, audioEnabled }) {
@@ -109,13 +109,13 @@ export default function ReflectPhase({ stats, onRestart, onGoHome, audioEnabled 
     return (
       <div className="reflect-phase">
         <div className="reflect-header">
-          <h3 className="reflect-label">📓 Reflect</h3>
-          <p className="reflect-sublabel">Teach the mascot what you learned!</p>
+          <h3 className="reflect-label">📓 विचार करो</h3>
+          <p className="reflect-sublabel">रोबोट को वह सिखाओ जो तुमने सीखा!</p>
         </div>
         <div className="reflect-card">
           <div className="reflect-mascot-row">
             <div className="mascot thinking" style={{ width: 70, height: 70, fontSize: '2rem' }}>🤖</div>
-            <div className="speech-bubble" style={{ maxWidth: 280 }}>Can you help me? {rq.q}</div>
+            <div className="speech-bubble" style={{ maxWidth: 280 }}>क्या तुम मेरी मदद कर सकते हो? {rq.q}</div>
           </div>
           <div className="reflect-options">
             {rq.options.map((opt, i) => (
@@ -142,8 +142,8 @@ export default function ReflectPhase({ stats, onRestart, onGoHome, audioEnabled 
     return (
       <div className="reflect-phase">
         <div className="reflect-card">
-          <h3 className="reflect-card-title">How do you feel about equal groups?</h3>
-          <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>Be honest — every answer is great!</p>
+          <h3 className="reflect-card-title">समान समूहों के बारे में आप कैसा महसूस करते हैं?</h3>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>ईमानदार रहो — हर जवाब अच्छा है!</p>
           <div className="confidence-grid">
             {CONFIDENCE_LEVELS.map((c, i) => (
               <button key={i} className={`confidence-btn ${confidence === i ? 'selected' : ''}`}
@@ -174,8 +174,8 @@ export default function ReflectPhase({ stats, onRestart, onGoHome, audioEnabled 
       )}
       <div className="certificate-card">
         <div className="cert-badge">🏆</div>
-        <h2 className="cert-title">Journey Complete!</h2>
-        <p className="cert-subtitle">You finished all 5 phases!</p>
+        <h2 className="cert-title">यात्रा पूरी हुई!</h2>
+        <p className="cert-subtitle">आपने सभी 5 चरण पूरे किए!</p>
         <div className="score-circle">
           <span className="score-number">{pct}%</span>
           <span className="score-label">{score}/{totalAnswered}</span>
@@ -188,26 +188,26 @@ export default function ReflectPhase({ stats, onRestart, onGoHome, audioEnabled 
         <div className="cert-stats">
           <div className="cert-stat">
             <div className="cert-stat-value" style={{ color: 'var(--gold)' }}>{xp}</div>
-            <div className="cert-stat-label">XP Earned</div>
+            <div className="cert-stat-label">XP मिले</div>
           </div>
           <div className="cert-stat">
             <div className="cert-stat-value" style={{ color: 'var(--coral)' }}>🔥 {maxStreak}</div>
-            <div className="cert-stat-label">Max Streak</div>
+            <div className="cert-stat-label">सबसे लंबी श्रृंखला</div>
           </div>
           <div className="cert-stat">
             <div className="cert-stat-value" style={{ color: 'var(--green-light)' }}>{teachCorrect}/{REFLECT_QUESTIONS.length}</div>
-            <div className="cert-stat-label">Teaching</div>
+            <div className="cert-stat-label">सिखाया</div>
           </div>
         </div>
         <div className="mascot-container" style={{ marginTop: 16 }}>
           <div className="mascot happy" style={{ width: 80, height: 80, fontSize: '2rem' }}>🤖</div>
           <div className="speech-bubble">
-            {pct >= 80 ? 'Incredible! You are an Equal Groups Master! 🏆' : pct >= 50 ? 'Great effort! Keep practicing! 💪' : 'Good start! Try again to improve! 📚'}
+            {pct >= 80 ? 'अद्भुत! आप समान समूह के उस्ताद हैं! 🏆' : pct >= 50 ? 'शानदार प्रयास! अभ्यास जारी रखो! 💪' : 'अच्छी शुरुआत! सुधार के लिए फिर कोशिश करो! 📚'}
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', justifyContent: 'center', marginTop: 24 }}>
-          <button className="btn btn-primary btn-lg" onClick={() => { narrationRef.current?.cancel(); stopNarration(); onRestart(); }}>🔄 Play Again</button>
-          <button className="btn btn-secondary" onClick={() => { narrationRef.current?.cancel(); stopNarration(); onGoHome(); }}>🏠 Home</button>
+          <button className="btn btn-primary btn-lg" onClick={() => { narrationRef.current?.cancel(); stopNarration(); onRestart(); }}>🔄 फिर से खेलो</button>
+          <button className="btn btn-secondary" onClick={() => { narrationRef.current?.cancel(); stopNarration(); onGoHome(); }}>🏠 होम</button>
         </div>
       </div>
     </div>

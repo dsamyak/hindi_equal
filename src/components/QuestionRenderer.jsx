@@ -63,7 +63,7 @@ export default function QuestionRenderer({ question, onAnswer, disabled }) {
   return (
     <div>
       <div style={{ display: 'inline-block', background: 'var(--coral)', color: 'white', padding: '4px 12px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 700, marginBottom: 12, letterSpacing: '0.5px' }}>
-        🍓 EQUAL GROUPS
+        🍓 समान समूह
       </div>
       <p className="question-text">{question.questionText}</p>
 

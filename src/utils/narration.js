@@ -1,5 +1,6 @@
 // ──────────────────────────────────────────────────
-// Narration Scripts — Equal Groups (Exact Screen Text Match)
+// Narration Scripts — Equal Groups (हिंदी)
+// सभी नैरेशन हिंदी में हैं — ElevenLabs multilingual v2
 // ──────────────────────────────────────────────────
 
 import { say, ask, cheer, emphasize, think, celebrate, instruct, pause } from './audio';
@@ -7,10 +8,10 @@ import { say, ask, cheer, emphasize, think, celebrate, instruct, pause } from '.
 // ─── INTRO SCREEN ────────────────────────────────
 export function introNarration() {
   return [
-    cheer("Welcome to Equal Groups!"),
-    say("Today, we are going to learn about equal groups for multiplication and division."),
-    ask("What happens when we put the same number of things into every group? Can we find how many there are altogether?"),
-    cheer("Are you ready to explore equal groups and solve some fun challenges? Let us get started on our learning journey!"),
+    cheer("समान समूहों में आपका स्वागत है!"),
+    say("आज हम गुणा और भाग के लिए समान समूहों के बारे में सीखेंगे।"),
+    ask("क्या होता है जब हम हर समूह में एक जैसी चीज़ें रखते हैं? क्या हम कुल गिन सकते हैं?"),
+    cheer("क्या आप समान समूहों को खोजने और मज़ेदार चुनौतियाँ हल करने के लिए तैयार हैं? चलो अपनी सीखने की यात्रा शुरू करते हैं!"),
   ];
 }
 
@@ -31,36 +32,36 @@ export function getStoryNarration(slideIndex) {
   switch (slideIndex) {
     case 0:
       return [
-        say("Mia has twelve strawberries. She wants to put the same number on every plate."),
-        ask("Can she do it? How many strawberries will go on each plate?"),
-        say("Let us find out what equal groups really means!"),
+        say("मीरा के पास बारह स्ट्रॉबेरी हैं। वह हर थाली में एक जैसी स्ट्रॉबेरी रखना चाहती है।"),
+        ask("क्या वह ऐसा कर सकती है? हर थाली में कितनी स्ट्रॉबेरी जाएंगी?"),
+        say("चलो पता करते हैं कि समान समूह का मतलब क्या होता है!"),
       ];
     case 1:
       return [
-        say("Wei Ming visits the hawker centre with his family."),
-        say("There are three tables. Each table has four bowls of noodles."),
-        emphasize("Every table gets the same number of bowls. That is what we call equal groups!"),
+        say("वेई मिंग अपने परिवार के साथ खाने की दुकान पर जाता है।"),
+        say("वहाँ तीन मेज़ें हैं। हर मेज़ पर नूडल्स के चार कटोरे हैं।"),
+        emphasize("हर मेज़ को एक जैसे कटोरे मिलते हैं। इसी को हम समान समूह कहते हैं!"),
       ];
     case 2:
       return [
-        say("Three groups of four. Count with me: four, eight, twelve. Altogether equals twelve!"),
-        emphasize("When every group has the same number, we call them equal groups."),
+        say("चार के तीन समूह। मेरे साथ गिनो: चार, आठ, बारह। कुल मिलाकर बारह!"),
+        emphasize("जब हर समूह में एक जैसी चीज़ें हों, तो उन्हें समान समूह कहते हैं।"),
       ];
     case 3:
       return [
-        say("Now Wei Ming's family shares ten apples equally into five bags."),
-        emphasize("Each bag gets two apples. Fair sharing means equal groups!"),
+        say("अब वेई मिंग का परिवार दस सेब पाँच थैलियों में बराबर बाँटता है।"),
+        emphasize("हर थैली में दो सेब जाते हैं। बराबर बाँटना मतलब समान समूह!"),
       ];
     case 4:
       return [
-        say("Equal groups help us multiply. Three groups of four means four plus four plus four."),
-        emphasize("That is called repeated addition!"),
-        say("And when we share equally, that is the start of division!"),
+        say("समान समूह हमें गुणा करने में मदद करते हैं। चार के तीन समूह मतलब चार जमा चार जमा चार।"),
+        emphasize("इसे बार-बार जोड़ना कहते हैं!"),
+        say("और जब हम बराबर बाँटते हैं, तो वह भाग की शुरुआत होती है!"),
       ];
     case 5:
       return [
-        cheer("Now you know what equal groups are!"),
-        say("Let us practice making equal groups ourselves!"),
+        cheer("अब आप जानते हैं कि समान समूह क्या होते हैं!"),
+        say("चलो खुद समान समूह बनाने का अभ्यास करते हैं!"),
       ];
     default:
       return [];
@@ -70,20 +71,20 @@ export function getStoryNarration(slideIndex) {
 // ─── SIMULATE PHASE ──────────────────────────────
 export function simulateStation1Intro() {
   return [
-    instruct("Drag the objects into the circles. Put the same number in each group!"),
-    ask("Make sure every group has the same number. Can you do it?"),
+    instruct("वस्तुओं को घेरों में खींचो। हर समूह में एक जैसी संख्या रखो!"),
+    ask("यह पक्का करो कि हर समूह में एक जैसी संख्या हो। क्या तुम कर सकते हो?"),
   ];
 }
 
 export function simulateStation2Intro() {
   return [
-    instruct("Look at these arrangements. Which ones show equal groups? Tap to choose!"),
+    instruct("इन व्यवस्थाओं को देखो। कौन सी समान समूह दिखाती है? टैप करके चुनो!"),
   ];
 }
 
 export function simulateStation3Intro() {
   return [
-    ask("Now fill in the missing number. Use the number pad!"),
+    ask("अब खाली जगह भरो। नंबर पैड का उपयोग करो!"),
   ];
 }
 
@@ -94,7 +95,7 @@ export function simulateAllComplete() {
 // ─── PLAY PHASE ──────────────────────────────────
 export function playWorldIntro(worldName) {
   return [
-    celebrate(`Welcome to ${worldName}!`),
+    celebrate(`${worldName} में आपका स्वागत है!`),
   ];
 }
 
@@ -114,15 +115,15 @@ export function playWrongNarration() {
 
 export function playWorldComplete(worldName, score, total) {
   return [
-    say(`${worldName} Complete!`),
-    say(`Score: ${score} out of ${total}`),
+    say(`${worldName} पूरा हुआ!`),
+    say(`अंक: ${total} में से ${score}`),
   ];
 }
 
 // ─── REFLECT PHASE ───────────────────────────────
 export function reflectIntroNarration() {
   return [
-    ask("What did you learn about equal groups?"),
+    ask("आपने समान समूहों के बारे में क्या सीखा?"),
   ];
 }
 
@@ -136,12 +137,12 @@ export function reflectWrongNarration() {
 
 export function reflectConfidenceNarration() {
   return [
-    ask("How confident do you feel about equal groups?"),
+    ask("समान समूहों के बारे में आप कितना आत्मविश्वास महसूस करते हैं?"),
   ];
 }
 
 export function reflectCertificateNarration(pct) {
   return [
-    say(`You scored ${Math.round(pct)}%`),
+    say(`आपने ${Math.round(pct)} प्रतिशत अंक पाए`),
   ];
 }

@@ -3,11 +3,11 @@ import { narrate, stopNarration } from '../utils/audio';
 import { introNarration } from '../utils/narration';
 
 const JOURNEY_PHASES = [
-  { icon: '🔍', label: 'Wonder', desc: 'An equal groups mystery!' },
-  { icon: '📖', label: 'Story', desc: 'See equal groups in action' },
-  { icon: '🧪', label: 'Simulate', desc: 'Build equal groups' },
-  { icon: '🎮', label: 'Play', desc: 'Gamified challenges' },
-  { icon: '📓', label: 'Reflect', desc: 'What did you learn?' },
+  { icon: '🔍', label: 'सोचो', desc: 'समान समूहों का रहस्य!' },
+  { icon: '📖', label: 'कहानी', desc: 'समान समूहों को देखो' },
+  { icon: '🧪', label: 'अनुकरण', desc: 'समान समूह बनाओ' },
+  { icon: '🎮', label: 'खेलो', desc: 'मज़ेदार चुनौतियाँ' },
+  { icon: '📓', label: 'विचार', desc: 'आपने क्या सीखा?' },
 ];
 
 export default function IntroScreen({ onStart, audioEnabled, onToggleAudio }) {
@@ -36,34 +36,34 @@ export default function IntroScreen({ onStart, audioEnabled, onToggleAudio }) {
     <div className="intro-screen">
       {/* Curriculum badge */}
       <div className="intro-badge">
-        ✨  · Grade 1 Maths
+        ✨ · कक्षा 1 · गणित
       </div>
 
       {/* Title */}
       <h1 className="intro-title">
-        <span style={{ color: 'var(--gold)' }}>Equal Groups</span>{' '}—{' '}
-        <span style={{ color: 'var(--coral)' }}>Multiplication & Division</span>
+        <span style={{ color: 'var(--gold)' }}>समान समूह</span>{' '}—{' '}
+        <span style={{ color: 'var(--coral)' }}>गुणा और भाग</span>
       </h1>
       <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: 4, fontFamily: 'var(--font-display)' }}>
-        Lesson 4.1 · Introduction to equal groups
+        पाठ 4.1 · समान समूहों का परिचय
       </p>
 
       {/* Mascot */}
       <div className="mascot-container">
         <div className="mascot">🤖</div>
         <div className="speech-bubble">
-          Let's explore equal groups! 🍓
+          चलो समान समूहों को खोजते हैं! 🍓
         </div>
       </div>
 
       {/* Description */}
       <p className="intro-desc">
-        Learn to see <strong style={{ color: 'var(--gold)' }}>equal groups</strong> everywhere, count them up, share fairly, and discover the secrets of multiplication and division!
+        <strong style={{ color: 'var(--gold)' }}>समान समूह</strong> हर जगह देखना सीखो, उन्हें गिनो, बराबर बाँटो, और गुणा तथा भाग के रहस्य खोजो!
       </p>
 
       {/* Journey map */}
       <div className="intro-journey-map">
-        <h3 className="intro-journey-title">Your Learning Journey</h3>
+        <h3 className="intro-journey-title">आपकी सीखने की यात्रा</h3>
         <div className="intro-journey-steps">
           {JOURNEY_PHASES.map((p, i) => (
             <div key={i} className="intro-journey-step">
@@ -80,22 +80,22 @@ export default function IntroScreen({ onStart, audioEnabled, onToggleAudio }) {
 
       {/* CTA */}
       <button className="btn btn-primary btn-lg intro-start-btn" onClick={handleStart} id="start-journey-btn">
-        🚀 Begin Your Journey!
+        🚀 यात्रा शुरू करो!
       </button>
 
       {/* Feature cards */}
       <div className="feature-cards">
         <div className="feature-card">
           <div className="feature-card-icon">🎯</div>
-          <div className="feature-card-label">100 Challenges</div>
+          <div className="feature-card-label">100 चुनौतियाँ</div>
         </div>
         <div className="feature-card">
           <div className="feature-card-icon">🍓</div>
-          <div className="feature-card-label">Equal Groups</div>
+          <div className="feature-card-label">समान समूह</div>
         </div>
         <div className="feature-card">
           <div className="feature-card-icon">✨</div>
-          <div className="feature-card-label">Badges & XP</div>
+          <div className="feature-card-label">बैज और XP</div>
         </div>
       </div>
     </div>

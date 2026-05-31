@@ -7,9 +7,9 @@ import { simulateStation1Intro, simulateStation2Intro, simulateStation3Intro } f
 function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
 const STATIONS = [
-  { id: 0, title: 'Build Groups', subtitle: 'Concrete Grouping', icon: '🍓' },
-  { id: 1, title: 'Spot Equal', subtitle: 'Pictorial Recognition', icon: '👁️' },
-  { id: 2, title: 'Number Sentence', subtitle: 'Abstract Math', icon: '📝' },
+  { id: 0, title: 'समूह बनाओ', subtitle: 'वस्तु समूहन', icon: '🍓' },
+  { id: 1, title: 'समान पहचानो', subtitle: 'चित्र पहचान', icon: '👁️' },
+  { id: 2, title: 'संख्या वाक्य', subtitle: 'गणित अभ्यास', icon: '📝' },
 ];
 
 // ═══════════════════════════════════════════════════
@@ -48,15 +48,14 @@ function Station1({ audioEnabled, onNext }) {
     newGroups[gi]++;
     setGroups(newGroups);
 
-    // Check if all groups are full
     if (newGroups.every(g => g === groupSize)) {
       setDone(true);
       sounds.correct();
       narRef.current?.cancel();
       if (audioEnabled) {
         narRef.current = narrate([
-          celebrate(`${numGroups} groups of ${groupSize} is ${numGroups * groupSize}!`),
-          cheer("You made equal groups!")
+          celebrate(`${numGroups} के ${groupSize} समूह = ${numGroups * groupSize}!`),
+          cheer("तुमने समान समूह बनाए!")
         ], true);
       }
     }
@@ -67,10 +66,11 @@ function Station1({ audioEnabled, onNext }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <div className="station-header"><h2>🍓 Build Equal Groups</h2></div>
+      <div className="station-header"><h2>🍓 समान समूह बनाओ</h2></div>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
-        Put <strong style={{ color: 'var(--gold)' }}>{groupSize}</strong> {emoji} in each of the{' '}
-        <strong style={{ color: 'var(--coral)' }}>{numGroups}</strong> groups. Tap a circle to add!
+        हर {' '}<strong style={{ color: 'var(--coral)' }}>{numGroups}</strong>{' '}
+        समूह में <strong style={{ color: 'var(--gold)' }}>{groupSize}</strong>{' '}
+        {emoji} रखो। जोड़ने के लिए घेरे पर टैप करो!
       </p>
 
       {/* Group Circles */}
@@ -90,23 +90,23 @@ function Station1({ audioEnabled, onNext }) {
       </div>
 
       <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: 16 }}>
-        Placed: {totalPlaced} / {totalNeeded}
+        रखे: {totalPlaced} / {totalNeeded}
       </p>
 
       {done && (
         <div style={{ animation: 'bounceIn 0.5s' }}>
           <div className="group-diagram-label">
-            {numGroups} groups of {groupSize} = {totalNeeded} 🎉
+            {numGroups} के {groupSize} समूह = {totalNeeded} 🎉
           </div>
           <div style={{ margin: '16px 0' }}>
             <EqualGroupDiagram numGroups={numGroups} groupSize={groupSize} objectEmoji={emoji} animated={true} size="small" />
           </div>
           <button className={`btn ${round < 2 ? 'btn-outline' : 'btn-primary'}`} onClick={() => round < 2 ? setRound(r => r + 1) : onNext()}>
-            {round < 2 ? 'Try Another →' : 'Next Station →'}
+            {round < 2 ? 'और कोशिश करो →' : 'अगला स्टेशन →'}
           </button>
         </div>
       )}
-      <div style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)' }}>Round {Math.min(round + 1, 3)} / 3</div>
+      <div style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)' }}>चक्र {Math.min(round + 1, 3)} / 3</div>
     </div>
   );
 }
@@ -120,20 +120,17 @@ function Station2({ audioEnabled, onNext }) {
   const [selectedIdx, setSelectedIdx] = useState(null);
   const narRef = useRef(null);
 
-  // Generate arrangements: one equal, others unequal
   const [arrangements, setArrangements] = useState([]);
   const [correctIdx, setCorrectIdx] = useState(0);
 
   useEffect(() => {
     const ng = randInt(2, 4);
     const gs = randInt(2, 5);
-    // Equal arrangement
     const equalArr = { groups: Array(ng).fill(gs), label: `${ng} × ${gs}`, isEqual: true };
-    // Unequal arrangements
     const unequalArrs = [
-      { groups: Array.from({ length: ng }, (_, i) => i === 0 ? gs + 1 : gs), label: 'Unequal A', isEqual: false },
-      { groups: Array.from({ length: ng }, (_, i) => i === ng - 1 ? gs - 1 : gs), label: 'Unequal B', isEqual: false },
-      { groups: [...Array(ng - 1).fill(gs), gs + 2], label: 'Unequal C', isEqual: false },
+      { groups: Array.from({ length: ng }, (_, i) => i === 0 ? gs + 1 : gs), label: 'असमान A', isEqual: false },
+      { groups: Array.from({ length: ng }, (_, i) => i === ng - 1 ? gs - 1 : gs), label: 'असमान B', isEqual: false },
+      { groups: [...Array(ng - 1).fill(gs), gs + 2], label: 'असमान C', isEqual: false },
     ];
     const shuffled = [equalArr, ...unequalArrs.slice(0, 3)].sort(() => Math.random() - 0.5);
     setArrangements(shuffled);
@@ -157,7 +154,7 @@ function Station2({ audioEnabled, onNext }) {
       sounds.correct();
       narRef.current?.cancel();
       if (audioEnabled) {
-        narRef.current = narrate([celebrate("That is the equal group!")], true);
+        narRef.current = narrate([celebrate("यह समान समूह है!")], true);
       }
     } else {
       sounds.wrong();
@@ -168,9 +165,9 @@ function Station2({ audioEnabled, onNext }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <div className="station-header"><h2>👁️ Spot the Equal Group</h2></div>
+      <div className="station-header"><h2>👁️ समान समूह पहचानो</h2></div>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 16 }}>
-        Which arrangement shows <strong style={{ color: 'var(--gold)' }}>equal groups</strong>? Tap to choose!
+        कौन सी व्यवस्था <strong style={{ color: 'var(--gold)' }}>समान समूह</strong> दिखाती है? चुनने के लिए टैप करो!
       </p>
 
       <div className="arrangement-grid">
@@ -187,7 +184,7 @@ function Station2({ audioEnabled, onNext }) {
                 </div>
               ))}
             </div>
-            {answered && idx === correctIdx && <div style={{ color: 'var(--green)', fontSize: '0.8rem', marginTop: 8, fontWeight: 700 }}>✅ Equal!</div>}
+            {answered && idx === correctIdx && <div style={{ color: 'var(--green)', fontSize: '0.8rem', marginTop: 8, fontWeight: 700 }}>✅ समान!</div>}
           </div>
         ))}
       </div>
@@ -195,11 +192,11 @@ function Station2({ audioEnabled, onNext }) {
       {answered && (
         <div style={{ marginTop: 20, animation: 'bounceIn 0.5s' }}>
           <button className={`btn ${round < 2 ? 'btn-outline' : 'btn-primary'}`} onClick={() => round < 2 ? setRound(r => r + 1) : onNext()}>
-            {round < 2 ? 'Try Another →' : 'Next Station →'}
+            {round < 2 ? 'और कोशिश करो →' : 'अगला स्टेशन →'}
           </button>
         </div>
       )}
-      <div style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)' }}>Round {Math.min(round + 1, 3)} / 3</div>
+      <div style={{ marginTop: 16, fontSize: '0.8rem', color: 'var(--text-muted)' }}>चक्र {Math.min(round + 1, 3)} / 3</div>
     </div>
   );
 }
@@ -246,7 +243,7 @@ function Station3({ audioEnabled, onComplete }) {
       sounds.correct();
       narRef.current?.cancel();
       if (audioEnabled) {
-        narRef.current = narrate([celebrate(`Yes! ${numGroups} groups of ${groupSize} equals ${total}!`)], true);
+        narRef.current = narrate([celebrate(`हाँ! ${numGroups} के ${groupSize} समूह = ${total}!`)], true);
       }
     } else if (newVal.length >= String(total).length) {
       sounds.wrong();
@@ -258,14 +255,14 @@ function Station3({ audioEnabled, onComplete }) {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <div className="station-header"><h2>📝 Number Sentence</h2></div>
+      <div className="station-header"><h2>📝 संख्या वाक्य</h2></div>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 24 }}>
-        Fill in the blank! Use the number pad.
+        खाली जगह भरो! नंबर पैड का उपयोग करो।
       </p>
 
       <div className="sentence-row">
         <span className="given-value">{numGroups}</span>
-        <span className="sentence-label">groups of</span>
+        <span className="sentence-label">के समूह</span>
         <span className="given-value">{groupSize}</span>
         <span className="sentence-equals">=</span>
         <div className={`blank-input ${done ? 'correct' : inputVal ? 'filled' : ''}`}>
@@ -274,7 +271,7 @@ function Station3({ audioEnabled, onComplete }) {
       </div>
 
       <button className="btn btn-sm btn-outline" onClick={() => setShowHint(!showHint)} style={{ marginBottom: 24 }}>
-        {showHint ? 'Hide Hint' : 'Show Hint 🍓'}
+        {showHint ? 'संकेत छिपाओ' : 'संकेत दिखाओ 🍓'}
       </button>
 
       {showHint && (
@@ -291,21 +288,21 @@ function Station3({ audioEnabled, onComplete }) {
               {n}
             </button>
           ))}
-          <button className="num-pad-btn" onClick={() => setInputVal('')} style={{ gridColumn: 'span 2' }}>Clear</button>
+          <button className="num-pad-btn" onClick={() => setInputVal('')} style={{ gridColumn: 'span 2' }}>मिटाओ</button>
         </div>
       )}
 
       {done && (
         <div style={{ marginTop: 24, animation: 'bounceIn 0.5s' }}>
           {round < 2 ? (
-            <button className="btn btn-outline" onClick={() => setRound(r => r + 1)}>Try Another →</button>
+            <button className="btn btn-outline" onClick={() => setRound(r => r + 1)}>और कोशिश करो →</button>
           ) : (
-            <button className="btn btn-primary btn-lg" onClick={handleComplete}>🎉 Complete Simulation!</button>
+            <button className="btn btn-primary btn-lg" onClick={handleComplete}>🎉 अनुकरण पूरा!</button>
           )}
         </div>
       )}
 
-      <div style={{ marginTop: 24, fontSize: '0.8rem', color: 'var(--text-muted)' }}>Round {Math.min(round + 1, 3)} / 3</div>
+      <div style={{ marginTop: 24, fontSize: '0.8rem', color: 'var(--text-muted)' }}>चक्र {Math.min(round + 1, 3)} / 3</div>
     </div>
   );
 }
@@ -320,8 +317,8 @@ export default function SimulatePhase({ onComplete, audioEnabled }) {
   return (
     <div className="simulate-phase">
       <div className="simulate-header">
-        <h3 className="simulate-label">🧪 Simulate</h3>
-        <p className="simulate-sublabel">Explore and discover — no wrong answers!</p>
+        <h3 className="simulate-label">🧪 अनुकरण</h3>
+        <p className="simulate-sublabel">खोजो और सीखो — कोई गलत जवाब नहीं!</p>
       </div>
       <div className="progress-dots">
         {STATIONS.map((s, i) => (

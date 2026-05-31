@@ -5,45 +5,45 @@ import { getStoryNarration } from '../utils/narration';
 const STORY_SLIDES = [
   {
     image: '/images/story_strawberries.png',
-    title: "Mia's Strawberries",
-    text: 'Mia has twelve strawberries. She wants to put the same number on every plate. Can she do it? How many strawberries will go on each plate?',
-    highlight: '"Can we share them equally?"',
-    mascotText: "Let's find out what equal groups means! 🍓",
+    title: "मीरा की स्ट्रॉबेरी",
+    text: 'मीरा के पास बारह स्ट्रॉबेरी हैं। वह हर थाली में एक जैसी स्ट्रॉबेरी रखना चाहती है। क्या वह ऐसा कर सकती है? हर थाली में कितनी स्ट्रॉबेरी जाएंगी?',
+    highlight: '"क्या हम उन्हें बराबर बाँट सकते हैं?"',
+    mascotText: "चलो पता करते हैं समान समूह का मतलब! 🍓",
   },
   {
     image: '/images/story_hawker.png',
-    title: "At the Hawker Centre",
-    text: 'Wei Ming visits the hawker centre with his family. There are three tables. Each table has four bowls of noodles. Every table gets the same number of bowls. That is what we call equal groups!',
-    highlight: '"Same number in each group = Equal groups!"',
-    mascotText: "Equal means the same! 🍜",
+    title: "खाने की दुकान पर",
+    text: 'वेई मिंग अपने परिवार के साथ खाने की दुकान पर जाता है। वहाँ तीन मेज़ें हैं। हर मेज़ पर नूडल्स के चार कटोरे हैं। हर मेज़ को एक जैसे कटोरे मिलते हैं। इसी को हम समान समूह कहते हैं!',
+    highlight: '"हर समूह में एक जैसी संख्या = समान समूह!"',
+    mascotText: "समान मतलब एक जैसा! 🍜",
   },
   {
     image: '/images/story_counting.png',
-    title: "Counting by Groups",
-    text: 'Three groups of four. Count with me: four, eight, twelve. Altogether equals twelve! When every group has the same number, we call them equal groups.',
+    title: "समूहों में गिनो",
+    text: 'चार के तीन समूह। मेरे साथ गिनो: चार, आठ, बारह। कुल मिलाकर बारह! जब हर समूह में एक जैसी चीज़ें हों, तो उन्हें समान समूह कहते हैं।',
     highlight: '"4 + 4 + 4 = 12"',
-    mascotText: "That is repeated addition! ➕",
+    mascotText: "यही बार-बार जोड़ना है! ➕",
   },
   {
     image: '/images/story_sharing.png',
-    title: "Fair Sharing",
-    text: "Now Wei Ming's family shares ten apples equally into five bags. Each bag gets two apples. Fair sharing means equal groups!",
-    highlight: '"10 shared into 5 groups = 2 each"',
-    mascotText: "Equal sharing is division! ➗",
+    title: "बराबर बाँटना",
+    text: 'अब वेई मिंग का परिवार दस सेब पाँच थैलियों में बराबर बाँटता है। हर थैली में दो सेब जाते हैं। बराबर बाँटना मतलब समान समूह!',
+    highlight: '"10 को 5 समूहों में = हर में 2"',
+    mascotText: "बराबर बाँटना ही भाग है! ➗",
   },
   {
     image: '/images/story_multiply.png',
-    title: "Multiply & Divide",
-    text: 'Equal groups help us multiply. Three groups of four means four plus four plus four. That is called repeated addition! And when we share equally, that is the start of division!',
-    highlight: '"Repeated addition → Multiplication!"',
-    mascotText: "You are learning so fast! 🚀",
+    title: "गुणा और भाग",
+    text: 'समान समूह हमें गुणा करने में मदद करते हैं। चार के तीन समूह मतलब चार जमा चार जमा चार। इसे बार-बार जोड़ना कहते हैं! और जब हम बराबर बाँटते हैं, तो वह भाग की शुरुआत होती है!',
+    highlight: '"बार-बार जोड़ना → गुणा!"',
+    mascotText: "आप बहुत तेज़ सीख रहे हो! 🚀",
   },
   {
     image: '/images/story_practice.png',
-    title: "Your Turn!",
-    text: 'Now you know what equal groups are! When every group has the same number, we can count them quickly with equal groups. Let us practice making equal groups ourselves!',
-    highlight: '"Equal groups — here we go!"',
-    mascotText: "Ready to explore! ✨",
+    title: "आपकी बारी!",
+    text: 'अब आप जानते हैं कि समान समूह क्या होते हैं! जब हर समूह में एक जैसी चीज़ें हों, तो हम उन्हें समान समूह से जल्दी गिन सकते हैं। चलो खुद समान समूह बनाने का अभ्यास करते हैं!',
+    highlight: '"समान समूह — चलो शुरू करते हैं!"',
+    mascotText: "खोज के लिए तैयार! ✨",
   },
 ];
 
@@ -122,12 +122,12 @@ export default function StoryPhase({ onComplete, audioEnabled }) {
         </div>
       </div>
       <div className="story-nav">
-        <button className="btn btn-outline btn-sm" onClick={goPrev} disabled={slide === 0} style={{ opacity: slide === 0 ? 0.3 : 1 }}>← Back</button>
+        <button className="btn btn-outline btn-sm" onClick={goPrev} disabled={slide === 0} style={{ opacity: slide === 0 ? 0.3 : 1 }}>← वापस</button>
         <div className="story-dots">
           {STORY_SLIDES.map((_, i) => (<div key={i} className={`story-dot ${i === slide ? 'active' : i < slide ? 'completed' : ''}`} />))}
         </div>
         <button className={`btn ${isLast ? 'btn-green' : 'btn-primary'} btn-sm`} onClick={goNext}>
-          {isLast ? "🚀 Let's Explore!" : 'Next →'}
+          {isLast ? "🚀 चलो खोजते हैं!" : 'आगे →'}
         </button>
       </div>
     </div>

@@ -10,11 +10,11 @@ import ReflectPhase from './components/ReflectPhase';
 
 const PHASES = ['intro', 'wonder', 'story', 'simulate', 'play', 'reflect'];
 const JOURNEY_ITEMS = [
-  { icon: '🔍', label: 'Wonder' },
-  { icon: '📖', label: 'Story' },
-  { icon: '🧪', label: 'Simulate' },
-  { icon: '🎮', label: 'Play' },
-  { icon: '📓', label: 'Reflect' },
+  { icon: '🔍', label: 'सोचो' },
+  { icon: '📖', label: 'कहानी' },
+  { icon: '🧪', label: 'अनुकरण' },
+  { icon: '🎮', label: 'खेलो' },
+  { icon: '📓', label: 'विचार' },
 ];
 
 export default function App() {
@@ -54,14 +54,14 @@ export default function App() {
       <FloatingNumbers />
       <div className="app-container">
         {/* Audio Toggle */}
-        <button className="audio-toggle-btn" onClick={toggleAudio} title={audioEnabled ? 'Mute' : 'Unmute'}>
+        <button className="audio-toggle-btn" onClick={toggleAudio} title={audioEnabled ? 'म्यूट करो' : 'म्यूट हटाओ'}>
           {audioEnabled ? '🔊' : '🔇'}
         </button>
 
         {/* Home Button */}
         {showJourney && (
           <button className="home-btn" onClick={goHome}>
-            🏠 Home
+            🏠 होम
           </button>
         )}
 

@@ -9,7 +9,12 @@ let currentAudio = null;
 let playId = 0;
 const elevenLabsCache = new Map();
 
-const ELEVENLABS_VOICE_ID = 'Xb7hH8MSUJpSbSDYk0k2';
+// Indian Hindi voices available on ElevenLabs (eleven_multilingual_v2):
+// • Meera     – pFZP5JQG7iQjIQuC4Bku  – warm female, child-friendly (RECOMMENDED)
+// • Raju      – ODq5zmih8GrVes37Dizd  – friendly male narrator
+// • Monika    – AZnzlk1XvdvUeBnXmlld  – calm natural female
+// Currently using: Meera (pFZP5JQG7iQjIQuC4Bku)
+const ELEVENLABS_VOICE_ID = 'pFZP5JQG7iQjIQuC4Bku';
 
 let audioMap = {};
 try {

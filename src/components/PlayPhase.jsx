@@ -5,16 +5,16 @@ import { playWorldIntro, playReadQuestion, playCorrectNarration, playWrongNarrat
 import QuestionRenderer from './QuestionRenderer';
 
 const WORLDS = [
-  { id: 0, name: 'Strawberry Farm', icon: '🍓', color: '#ff4081', desc: 'Questions 1–10' },
-  { id: 1, name: 'Jungle Trek', icon: '🌴', color: '#4caf50', desc: 'Questions 11–20' },
-  { id: 2, name: 'Ocean Deep', icon: '🌊', color: '#03a9f4', desc: 'Questions 21–30' },
-  { id: 3, name: 'Sky Islands', icon: '☁️', color: '#00bcd4', desc: 'Questions 31–40' },
-  { id: 4, name: 'Volcano Peak', icon: '🌋', color: '#ff5722', desc: 'Questions 41–50' },
-  { id: 5, name: 'Space Station', icon: '🚀', color: '#673ab7', desc: 'Questions 51–60' },
-  { id: 6, name: 'Dragon Cave', icon: '🐉', color: '#e91e63', desc: 'Questions 61–70' },
-  { id: 7, name: 'Crystal Tower', icon: '💎', color: '#9c27b0', desc: 'Questions 71–80' },
-  { id: 8, name: 'Rainbow Bridge', icon: '🌈', color: '#ffeb3b', desc: 'Questions 81–90' },
-  { id: 9, name: 'Number Palace', icon: '🏰', color: '#ff9800', desc: 'Questions 91–100' },
+  { id: 0, name: 'स्ट्रॉबेरी खेत', icon: '🍓', color: '#ff4081', desc: 'प्रश्न 1–10' },
+  { id: 1, name: 'जंगल यात्रा', icon: '🌴', color: '#4caf50', desc: 'प्रश्न 11–20' },
+  { id: 2, name: 'समुद्र की गहराई', icon: '🌊', color: '#03a9f4', desc: 'प्रश्न 21–30' },
+  { id: 3, name: 'आकाश द्वीप', icon: '☁️', color: '#00bcd4', desc: 'प्रश्न 31–40' },
+  { id: 4, name: 'ज्वालामुखी शिखर', icon: '🌋', color: '#ff5722', desc: 'प्रश्न 41–50' },
+  { id: 5, name: 'अंतरिक्ष स्टेशन', icon: '🚀', color: '#673ab7', desc: 'प्रश्न 51–60' },
+  { id: 6, name: 'ड्रैगन की गुफा', icon: '🐉', color: '#e91e63', desc: 'प्रश्न 61–70' },
+  { id: 7, name: 'क्रिस्टल टावर', icon: '💎', color: '#9c27b0', desc: 'प्रश्न 71–80' },
+  { id: 8, name: 'इंद्रधनुष पुल', icon: '🌈', color: '#ffeb3b', desc: 'प्रश्न 81–90' },
+  { id: 9, name: 'संख्या महल', icon: '🏰', color: '#ff9800', desc: 'प्रश्न 91–100' },
 ];
 
 function calcXP(attempt, streak) {
@@ -125,7 +125,7 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
       if (ns >= 5 && ns % 5 === 0) sounds.streak();
       setXpPopup(`+${earned} XP`);
       setTimeout(() => setXpPopup(null), 1500);
-      setFeedback({ type: 'correct', message: ns >= 5 ? `🔥 ${ns} Streak!` : 'Correct! 🎉', sub: q.explanation });
+      setFeedback({ type: 'correct', message: ns >= 5 ? `🔥 ${ns} श्रृंखला!` : 'सही है! 🎉', sub: q.explanation });
       if (audioEnabled) {
         narrationRef.current = narrate(playCorrectNarration(ns), true);
       }
@@ -133,7 +133,7 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
     } else {
       setStreak(0); setLives(l => l - 1);
       sounds.wrong();
-      setFeedback({ type: 'wrong', message: 'Not quite!', sub: q.explanation });
+      setFeedback({ type: 'wrong', message: 'सही नहीं!', sub: q.explanation });
       if (audioEnabled) {
         narrationRef.current = narrate(playWrongNarration(), true);
       }
@@ -148,8 +148,8 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
     return (
       <div className="play-phase">
         <div className="play-header">
-          <h2 className="play-title">🎮 Play — Choose Your World!</h2>
-          <p className="play-subtitle">Beat each world to unlock the next one. Earn stars and XP!</p>
+          <h2 className="play-title">🎮 खेलो — अपनी दुनिया चुनो!</h2>
+          <p className="play-subtitle">हर दुनिया जीतो और अगली अनलॉक करो। सितारे और XP कमाओ!</p>
           {totalXP > 0 && <div className="play-xp-badge">⭐ {totalXP} XP</div>}
         </div>
         <div className="world-map">
@@ -169,14 +169,14 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
                     <span className="world-score">{completed.score}/{completed.total}</span>
                   </div>
                 )}
-                {unlocked && !completed && <div className="world-play-btn">▶ PLAY</div>}
+                {unlocked && !completed && <div className="world-play-btn">▶ खेलो</div>}
               </div>
             );
           })}
         </div>
         {allDone && (
           <button className="btn btn-green btn-lg" onClick={handleAllComplete} style={{ marginTop: 24, animation: 'bounceIn 0.5s ease' }}>
-            🏆 Complete Challenge!
+            🏆 चुनौती पूरी करो!
           </button>
         )}
       </div>
@@ -192,23 +192,23 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
       <div className="play-phase">
         <div className="world-complete-card">
           <div className="world-complete-icon">{w.icon}</div>
-          <h2 className="world-complete-title">{w.name} Complete!</h2>
+          <h2 className="world-complete-title">{w.name} पूरा!</h2>
           <div className="world-complete-score">{score}/{worldQuestions.length}</div>
           <div className="world-complete-stars">
             {[1, 2, 3].map(s => (
               <span key={s} className={`world-star ${s <= stars ? 'earned' : ''}`} style={{ animationDelay: `${s * 0.2}s` }}>⭐</span>
             ))}
           </div>
-          <div className="world-complete-xp">⭐ {totalXP} XP earned</div>
+          <div className="world-complete-xp">⭐ {totalXP} XP मिले</div>
           <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap', justifyContent: 'center' }}>
-            <button className="btn btn-outline btn-sm" onClick={backToMap}>← World Map</button>
+            <button className="btn btn-outline btn-sm" onClick={backToMap}>← नक्शा</button>
             {isLastWorld ? (
-              <button className="btn btn-green" onClick={handleAllComplete}>🏆 Finish!</button>
+              <button className="btn btn-green" onClick={handleAllComplete}>🏆 समाप्त!</button>
             ) : (
               <button className="btn btn-primary" onClick={() => {
                 setWorldResults(prev => ({ ...prev, [currentWorld]: { score, total: worldQuestions.length, stars } }));
                 startWorld(currentWorld + 1);
-              }}>Next World →</button>
+              }}>अगली दुनिया →</button>
             )}
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function PlayPhase({ onComplete, audioEnabled }) {
       <div style={{ width: '100%', maxWidth: 700, marginBottom: 16 }}>
         <div className="progress-bar-container">
           <div className="progress-bar-label">
-            <span>Question {qIndex + 1}/{worldQuestions.length}</span>
+            <span>प्रश्न {qIndex + 1}/{worldQuestions.length}</span>
             <span>{pct}%</span>
           </div>
           <div className="progress-bar-track"><div className="progress-bar-fill" style={{ width: `${pct}%` }} /></div>
