@@ -12,7 +12,7 @@ const apiKey = process.env.VITE_ELEVENLABS_API_KEY;
 // • Meera  – pFZP5JQG7iQjIQuC4Bku – warm female, child-friendly (RECOMMENDED)
 // • Raju   – ODq5zmih8GrVes37Dizd – friendly male narrator
 // • Monika – AZnzlk1XvdvUeBnXmlld – calm natural female
-const voiceId = 'pFZP5JQG7iQjIQuC4Bku'; // Meera — Hindi female voice
+const voiceId = 'sTuFDs5r9KT8f6JSiJbq'; // Monika sogam — Hindi female voice
 
 const audioDir = path.join(__dirname, '../public/assets/audio');
 
@@ -22,13 +22,13 @@ if (!fs.existsSync(audioDir)) {
 
 const getElevenLabsSettings = (style) => {
     switch (style) {
-        case 'celebration':   return { stability: 0.12, similarity_boost: 0.45, style: 0.75, use_speaker_boost: true };
+        case 'celebration': return { stability: 0.12, similarity_boost: 0.45, style: 0.75, use_speaker_boost: true };
         case 'encouragement': return { stability: 0.16, similarity_boost: 0.50, style: 0.65, use_speaker_boost: true };
-        case 'question':      return { stability: 0.20, similarity_boost: 0.55, style: 0.55, use_speaker_boost: true };
-        case 'emphasis':      return { stability: 0.16, similarity_boost: 0.50, style: 0.60, use_speaker_boost: true };
-        case 'thinking':      return { stability: 0.24, similarity_boost: 0.60, style: 0.35, use_speaker_boost: true };
-        case 'instruction':   return { stability: 0.20, similarity_boost: 0.55, style: 0.50, use_speaker_boost: true };
-        default:              return { stability: 0.20, similarity_boost: 0.55, style: 0.50, use_speaker_boost: true };
+        case 'question': return { stability: 0.20, similarity_boost: 0.55, style: 0.55, use_speaker_boost: true };
+        case 'emphasis': return { stability: 0.16, similarity_boost: 0.50, style: 0.60, use_speaker_boost: true };
+        case 'thinking': return { stability: 0.24, similarity_boost: 0.60, style: 0.35, use_speaker_boost: true };
+        case 'instruction': return { stability: 0.20, similarity_boost: 0.55, style: 0.50, use_speaker_boost: true };
+        default: return { stability: 0.20, similarity_boost: 0.55, style: 0.50, use_speaker_boost: true };
     }
 };
 
@@ -56,12 +56,12 @@ const phrases = [
     { text: "मीरा के पास बारह स्ट्रॉबेरी हैं। वह हर थाली में एक जैसी स्ट्रॉबेरी रखना चाहती है।", style: 'statement' },
     { text: "क्या वह ऐसा कर सकती है? हर थाली में कितनी स्ट्रॉबेरी जाएंगी?", style: 'question' },
     { text: "चलो पता करते हैं कि समान समूह का मतलब क्या होता है!", style: 'encouragement' },
-    { text: "वेई मिंग अपने परिवार के साथ खाने की दुकान पर जाता है।", style: 'statement' },
+    { text: "रोहन अपने परिवार के साथ खाने की दुकान पर जाता है।", style: 'statement' },
     { text: "वहाँ तीन मेज़ें हैं। हर मेज़ पर नूडल्स के चार कटोरे हैं।", style: 'statement' },
     { text: "हर मेज़ को एक जैसे कटोरे मिलते हैं। इसी को हम समान समूह कहते हैं!", style: 'emphasis' },
     { text: "चार के तीन समूह। मेरे साथ गिनो: चार, आठ, बारह। कुल मिलाकर बारह!", style: 'statement' },
     { text: "जब हर समूह में एक जैसी चीज़ें हों, तो उन्हें समान समूह कहते हैं।", style: 'emphasis' },
-    { text: "अब वेई मिंग का परिवार दस सेब पाँच थैलियों में बराबर बाँटता है।", style: 'statement' },
+    { text: "अब रोहन का परिवार दस सेब पाँच थैलियों में बराबर बाँटता है।", style: 'statement' },
     { text: "हर थैली में दो सेब जाते हैं। बराबर बाँटना मतलब समान समूह!", style: 'emphasis' },
     { text: "समान समूह हमें गुणा करने में मदद करते हैं। चार के तीन समूह मतलब चार जमा चार जमा चार।", style: 'statement' },
     { text: "इसे बार-बार जोड़ना कहते हैं!", style: 'emphasis' },
