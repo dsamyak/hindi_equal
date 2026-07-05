@@ -24,13 +24,13 @@ try {
 } catch (e) { }
 
 const SPEECH_STYLES = {
-  statement: { rate: 0.65, pitch: 1.18, volume: 0.95 },
-  question: { rate: 0.60, pitch: 1.32, volume: 0.98 },
-  encouragement: { rate: 0.70, pitch: 1.35, volume: 1.0 },
-  emphasis: { rate: 0.55, pitch: 1.25, volume: 0.98 },
-  thinking: { rate: 0.60, pitch: 1.15, volume: 0.92 },
-  celebration: { rate: 0.75, pitch: 1.42, volume: 1.0 },
-  instruction: { rate: 0.65, pitch: 1.20, volume: 0.95 },
+  statement: { rate: 0.85, pitch: 1.18, volume: 0.95 },
+  question: { rate: 0.78, pitch: 1.32, volume: 0.98 },
+  encouragement: { rate: 0.90, pitch: 1.35, volume: 1.0 },
+  emphasis: { rate: 0.72, pitch: 1.25, volume: 0.98 },
+  thinking: { rate: 0.80, pitch: 1.15, volume: 0.92 },
+  celebration: { rate: 0.98, pitch: 1.42, volume: 1.0 },
+  instruction: { rate: 0.82, pitch: 1.20, volume: 0.95 },
 };
 
 const getElevenLabsSettings = (speechStyle) => {
@@ -109,11 +109,6 @@ export function speak(text, enabled = true, style = 'statement') {
       if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
 
       currentAudio = new Audio(audioUrl);
-      const styleConfig = SPEECH_STYLES[style];
-      if (styleConfig && styleConfig.rate) {
-        currentAudio.playbackRate = styleConfig.rate;
-        currentAudio.preservesPitch = true;
-      }
       currentAudio.onended = () => { isSpeaking = false; resolve(); };
       currentAudio.onerror = () => { isSpeaking = false; resolve(); };
       await currentAudio.play();

@@ -9,7 +9,7 @@ export const audioMap = {
   "जब हर समूह को एक जैसी चीज़ मिले, तो उसे समान समूह कहते हैं!": "/assets/audio/hindi_audio_005.mp3",
   "4 मेज़ें हैं। हर मेज़ पर 3 कटोरे हैं। कुल कितने कटोरे हैं?": "/assets/audio/hindi_audio_006.mp3",
   "समान समूह हमें बहुत सारी चीज़ें जल्दी गिनने में मदद करते हैं!": "/assets/audio/hindi_audio_007.mp3",
-  "अगर हर थैले में 5 संतरे हैं और 3 थैले हैं, तो कुल कितने संतरे हैं?": "/assets/audio/hindi_audio_008.mp3",
+  "अगर हर थैले में 5 oranges हैं और 3 थैले हैं, तो कुल कितने oranges हैं?": "/assets/audio/hindi_audio_008.mp3",
   "हर थैले में एक जैसी संख्या रखना — यही समान समूह है!": "/assets/audio/hindi_audio_009.mp3",
   "क्या आप 10 स्टिकर 5 दोस्तों में बराबर बाँट सकते हैं?": "/assets/audio/hindi_audio_010.mp3",
   "बराबर बाँटना मतलब समान समूह बनाना — सबको एक जैसा मिले!": "/assets/audio/hindi_audio_011.mp3",
